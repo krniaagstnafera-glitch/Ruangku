@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RuangKu - Sistem Reservasi Ruangan</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="halaman-awal">
+
+    <div class="login-container">
+
+        <div class="logo-ruangku">
+            <span>🏢</span>
+        </div>
+
+        <h1>RuangKu</h1>
+
+        <p class="subtitle">
+            Sistem Reservasi Ruangan
+        </p>
+
+        <h3 class="petunjuk">
+            Silakan pilih menu untuk melanjutkan
+        </h3>
+
+        {% if error %}
+            <p class="pesan-error">{{ error }}</p>
+        {% endif %}
+
+        <a href="{{ url_for('login_mahasiswa') }}"
+           class="menu-login menu-mahasiswa">
+            <span class="ikon-menu">🎓</span>
+            <span class="teks-menu">
+                <strong>Login Mahasiswa</strong>
+                <small>Masuk menggunakan akun mahasiswa</small>
+            </span>
+            <span class="panah">›</span>
+        </a>
+
+        <a href="{{ url_for('login_admin') }}"
+           class="menu-login menu-admin">
+            <span class="ikon-menu">🛡️</span>
+            <span class="teks-menu">
+                <strong>Login Admin</strong>
+                <small>Masuk untuk mengelola ruangan</small>
+            </span>
+            <span class="panah">›</span>
+        </a>
+
+        <a href="{{ url_for('register') }}"
+           class="menu-login menu-daftar">
+            <span class="ikon-menu">📝</span>
+            <span class="teks-menu">
+                <strong>Daftar Akun Mahasiswa</strong>
+                <small>Belum punya akun? Daftar di sini</small>
+            </span>
+            <span class="panah">›</span>
+        </a>
+
+        <footer>
+            RuangKu © Sistem Reservasi Ruangan
+        </footer>
+
+    </div>
+
+</body>
+</html>

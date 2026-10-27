@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ judul }} - RuangKu</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="halaman-awal">
+
+    <div class="login-container">
+
+        <div class="logo-ruangku">🏢</div>
+
+        <h1>RuangKu</h1>
+        <p class="subtitle">{{ judul }}</p>
+
+        {% if error %}
+            <p class="pesan-error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+
+            <label for="username">
+                {% if judul == "Login Mahasiswa" %}
+                    NIM
+                {% else %}
+                    Username Admin
+                {% endif %}
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="{% if judul == 'Login Mahasiswa' %}Masukkan NIM{% else %}Masukkan username admin{% endif %}"
+                required
+                autocomplete="username"
+            >
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Masukkan password"
+                required
+                autocomplete="current-password"
+            >
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        {% if judul == "Login Mahasiswa" %}
+            <p>
+                Belum punya akun?
+                <a href="{{ url_for('register') }}">
+                    Daftar di sini
+                </a>
+            </p>
+        {% endif %}
+
+        <p>
+            <a href="{{ url_for('login') }}">
+                Kembali ke menu utama
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>

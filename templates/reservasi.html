@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi Ruangan - RuangKu</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .pesan-error {
+            background-color: #ffe5e5;
+            color: #b42318;
+            border: 1px solid #f5a3a3;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .pesan-sukses {
+            background-color: #e5f7e9;
+            color: #18743a;
+            border: 1px solid #9bd5aa;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Form Reservasi</h1>
+        <p class="subtitle">Silakan isi data reservasi ruangan</p>
+
+        {% if error %}
+        <div class="pesan-error" role="alert">
+            <strong>Reservasi tidak berhasil!</strong><br>
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for kategori, pesan in messages %}
+                <div class="pesan-{{ kategori }}" role="alert">
+                    {{ pesan }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <label>Nama Pemesan</label>
+            <input type="text" name="nama" required>
+
+            <label>NIM</label>
+            <input type="text" name="nim" required>
+
+            <label>Ruangan</label>
+            <select name="ruangan" required>
+                <option value="">-- Pilih Ruangan --</option>
+
+                {% for r in ruangan %}
+                <option value="{{ r['nama'] }}"
+                    {% if ruangan_pilihan == r['nama'] %}selected{% endif %}>
+                    {{ r['nama'] }} - {{ r['kapasitas'] }} orang
+                </option>
+                {% endfor %}
+            </select>
+
+            <label>Tanggal</label>
+            <input type="date" name="tanggal" required>
+
+            <label>Jam Mulai</label>
+            <input type="time" name="jam_mulai" required>
+
+            <label>Jam Selesai</label>
+            <input type="time" name="jam_selesai" required>
+
+            <label>Jumlah Peserta</label>
+            <input type="number" name="jumlah_peserta" min="1" required>
+
+            <label>Keperluan</label>
+            <textarea name="keperluan" rows="4" required></textarea>
+
+            <button type="submit">Ajukan Reservasi</button>
+
+        </form>
+
+    </div>
+</body>
+</html>

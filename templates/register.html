@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mahasiswa - RuangKu</title>
+</head>
+<body>
+    <h2>Daftar Akun Mahasiswa</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label>NIM</label><br>
+        <input type="text" name="nim" required><br><br>
+
+        <label>Buat Password</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <label>Konfirmasi Password</label><br>
+        <input type="password" name="konfirmasi" required><br><br>
+
+        <button type="submit">Daftar</button>
+    </form>
+
+    <p>Sudah punya akun?
+        <a href="{{ url_for('login') }}">Login di sini</a>
+    </p>
+</body>
+</html>

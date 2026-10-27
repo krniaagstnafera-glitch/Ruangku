@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RuangKu - Beranda</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <h1>RuangKu</h1>
+
+    <p class="subtitle">
+        Sistem Reservasi Ruangan
+    </p>
+
+    <!-- INFORMASI LOGIN -->
+    <div class="card">
+        <h2>
+            Selamat datang, {{ session["username"] }} 👋
+        </h2>
+
+        <p>
+            Silakan pilih menu yang ingin digunakan.
+        </p>
+
+        <a href="/ketersediaan">
+            <button type="button">
+                Cek Ketersediaan
+            </button>
+        </a>
+
+        <a href="/reservasi-saya">
+            <button type="button">
+                Reservasi Saya
+            </button>
+        </a>
+
+        {% if session.get("role") == "admin" %}
+            <a href="/admin">
+                <button type="button">
+                    Dashboard Admin
+                </button>
+            </a>
+        {% endif %}
+
+        <a href="/logout">
+            <button type="button">
+                Logout
+            </button>
+        </a>
+    </div>
+
+
+    <!-- DAFTAR RUANGAN -->
+    <h2>Daftar Ruangan</h2>
+
+    <div class="ruangan">
+
+        {% for r in ruangan %}
+
+        <div class="card">
+
+            <h3>{{ r["nama"] }}</h3>
+
+            <p class="kapasitas">
+                Kapasitas: {{ r["kapasitas"] }} orang
+            </p>
+
+            <a href="/reservasi?ruangan={{ r['nama'] }}">
+                <button type="button">
+                    Reservasi
+                </button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cek Ketersediaan - RuangKu</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Cek Ketersediaan Ruangan</h1>
+
+    <p class="subtitle">
+        Pilih tanggal dan waktu untuk melihat ruangan yang tersedia
+    </p>
+
+    <form method="POST">
+
+        <label>Tanggal</label>
+        <input type="date" name="tanggal" value="{{ tanggal }}" required>
+
+        <label>Jam Mulai</label>
+        <input type="time" name="jam_mulai" value="{{ jam_mulai }}" required>
+
+        <label>Jam Selesai</label>
+        <input type="time" name="jam_selesai" value="{{ jam_selesai }}" required>
+
+        <br><br>
+
+        <button type="submit">
+            Cek Ketersediaan
+        </button>
+
+    </form>
+
+    {% if hasil %}
+
+    <h2>Hasil Ketersediaan</h2>
+
+    <div class="ruangan">
+
+        {% for r in hasil %}
+
+        <div class="card">
+
+            <h3>{{ r["nama"] }}</h3>
+
+            <p class="kapasitas">
+                Kapasitas: {{ r["kapasitas"] }} orang
+            </p>
+
+            {% if r["status"] == "Tersedia" %}
+
+                <p style="color: green; font-weight: bold;">
+                    🟢 Tersedia
+                </p>
+
+                <a href="/reservasi?ruangan={{ r['nama'] }}">
+                    <button type="button">
+                        Reservasi
+                    </button>
+                </a>
+
+            {% else %}
+
+                <p style="color: red; font-weight: bold;">
+                    🔴 Terisi
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button type="button">
+            Kembali ke Beranda
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

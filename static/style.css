@@ -1,0 +1,330 @@
+/* ==================================================
+   STYLE UMUM RUANGKU
+   ================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    color: #1f2937;
+}
+
+/* ==================================================
+   HALAMAN AWAL / LOGIN RUANGKU
+   ================================================== */
+
+.halaman-awal {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    background: linear-gradient(135deg, #e7efff, #f5f8ff);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 550px;
+    background-color: #ffffff;
+    padding: 35px 40px 25px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.12);
+}
+
+.logo-ruangku {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #edf3ff;
+    border-radius: 18px;
+    font-size: 36px;
+}
+
+.login-container h1 {
+    color: #172554;
+    text-align: center;
+    font-size: 34px;
+    margin: 0 0 8px;
+}
+
+.subtitle {
+    color: #6b7280;
+    text-align: center;
+    margin: 0 0 35px;
+    font-size: 16px;
+}
+
+.petunjuk {
+    font-size: 16px;
+    margin: 0 0 20px;
+    color: #374151;
+}
+
+/* MENU PILIHAN LOGIN */
+
+.menu-login {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px 15px;
+    margin-bottom: 14px;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
+}
+
+.menu-mahasiswa {
+    background-color: #2f6bc8;
+    color: #ffffff;
+}
+
+.menu-admin {
+    background-color: #f0f4f8;
+    color: #1f2937;
+}
+
+.menu-daftar {
+    background-color: #e8f7ee;
+    color: #17663b;
+}
+
+.ikon-menu {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    font-size: 24px;
+}
+
+.teks-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.teks-menu strong {
+    font-size: 16px;
+}
+
+.teks-menu small {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
+.panah {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.login-container footer {
+    margin-top: 28px;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.pesan-error {
+    padding: 10px;
+    color: #b91c1c;
+    background-color: #fee2e2;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ==================================================
+   FORM LOGIN DAN PENDAFTARAN
+   ================================================== */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.container label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+}
+
+.container input,
+.container select,
+.container textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.container input:focus,
+.container select:focus,
+.container textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+/* ==================================================
+   JUDUL DAN SUBJUDUL
+   ================================================== */
+
+h1 {
+    color: #1f2937;
+}
+
+h2 {
+    color: #1f2937;
+}
+
+.subtitle {
+    color: #6b7280;
+}
+
+/* ==================================================
+   KARTU RUANGAN
+   ================================================== */
+
+.ruangan {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.kapasitas {
+    color: #555;
+}
+
+/* ==================================================
+   TOMBOL
+   ================================================== */
+
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+/* ==================================================
+   TABEL
+   ================================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+/* ==================================================
+   TAMPILAN HP
+   ================================================== */
+
+@media (max-width: 700px) {
+    .login-container {
+        padding: 28px 20px 22px;
+        border-radius: 18px;
+    }
+
+    .login-container h1 {
+        font-size: 29px;
+    }
+
+    .petunjuk {
+        font-size: 14px;
+    }
+
+    .menu-login {
+        padding: 14px 11px;
+        gap: 10px;
+    }
+
+    .ikon-menu {
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+
+    .teks-menu strong {
+        font-size: 14px;
+    }
+
+    .teks-menu small {
+        font-size: 11px;
+    }
+
+    .ruangan {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 7px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ruangan {
+        grid-template-columns: 1fr;
+    }
+
+    .login-container {
+        padding: 25px 16px 20px;
+    }
+}

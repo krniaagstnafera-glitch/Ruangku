@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi Saya - RuangKu</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Reservasi Saya</h1>
+    <p class="subtitle">Daftar pengajuan reservasi ruangan</p>
+
+    {% if reservasi %}
+
+    <table border="1" cellpadding="10" cellspacing="0">
+
+        <tr>
+            <th>Nama</th>
+            <th>Ruangan</th>
+            <th>Tanggal</th>
+            <th>Jam</th>
+            <th>Peserta</th>
+            <th>Keperluan</th>
+            <th>Status</th>
+        </tr>
+
+        {% for r in reservasi %}
+
+        <tr>
+            <td>{{ r["nama"] }}</td>
+            <td>{{ r["ruangan"] }}</td>
+            <td>{{ r["tanggal"] }}</td>
+            <td>{{ r["jam_mulai"] }} - {{ r["jam_selesai"] }}</td>
+            <td>{{ r["jumlah_peserta"] }} orang</td>
+            <td>{{ r["keperluan"] }}</td>
+            <td>
+                {% if r["status"] == "Menunggu" %}
+                    🟡 Menunggu
+                {% elif r["status"] == "Disetujui" %}
+                    🟢 Disetujui
+                {% else %}
+                    🔴 Ditolak
+                {% endif %}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>Belum ada reservasi.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button type="button">Kembali ke Beranda</button>
+    </a>
+
+</div>
+
+</body>
+</html>
